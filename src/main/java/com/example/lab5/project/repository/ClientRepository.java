@@ -15,9 +15,11 @@ public class ClientRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public Client getClientId(int id, String location) {
-        Client client = jdbcTemplate.queryForObject("SELECT * FROM manufacturers WHERE id = ? and location = ?",
-                new Object[]{id, location},
+    //Ascending order
+    public Client getClientId(int id, String name) {
+        Client client = jdbcTemplate.queryForObject("SELECT * FROM clients WHERE id = ? " +
+                        "and salary > 40000, ORDER BY name ASC ",
+                new Object[]{id, name},
                 (response, rowNumber) ->
                         new Client(response.getInt("id"),
                                 response.getString("name"),

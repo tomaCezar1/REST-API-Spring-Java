@@ -22,8 +22,8 @@ public class ClientController {
     }
 
     @GetMapping("/{id}")
-    public Client getManufacturerID(@PathVariable int id, @RequestParam String location) {
-        Client client = clientRepository.getClientId(id, location);
+    public Client getManufacturerID(@PathVariable int id, @RequestParam(required = true) String name) {
+        Client client = clientRepository.getClientId(id, name);
         return client;
     }
 
