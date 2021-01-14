@@ -16,30 +16,30 @@ public class ClientController {
 
 
     @GetMapping
-    public List<Client> getManufacturers() {
+    public List<Client> getClients() {
         List<Client> clients = clientRepository.getClients();
         return clients;
     }
 
     @GetMapping("/{id}")
-    public Client getManufacturerID(@PathVariable int id, @RequestParam String location) {
-        Client client = clientRepository.getClientId(id, location);
+    public Client getClientId(@PathVariable int id, @RequestParam(required = true) String name) {
+        Client client = clientRepository.getClientId(id, name);
         return client;
     }
 
 
     @PostMapping("/reqBody")
-    public void saveCarBody(@RequestBody Client client) {
+    public void saveClient(@RequestBody Client client) {
         clientRepository.saveClient(client);
     }
 
     @PutMapping("/put/{id}")
-    public void updateManufacturer(@PathVariable int id, @RequestBody Client client) {
+    public void updateClient(@PathVariable int id, @RequestBody Client client) {
         clientRepository.updateClient(id, client);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteManufacturer(@PathVariable int id) {
+    public void deleteClient(@PathVariable int id) {
         clientRepository.deleteClient(id);
     }
 
