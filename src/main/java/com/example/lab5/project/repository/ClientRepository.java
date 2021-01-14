@@ -52,7 +52,18 @@ public class ClientRepository {
 
     // WHERE salary BETWEEN 10000 and 100000
 //    public List<Client> getClients() {
-//        List<Client> clients = jdbcTemplate.query("SELECT * FROM clients ORDER BY salary DSC",
+//        List<Client> clients = jdbcTemplate.query("SELECT * FROM clients WHERE salary BETWEEN 10000 100000",
+//                (response, rowNumber) ->
+//                        new Client(response.getInt("id"),
+//                                response.getString("name"),
+//                                response.getInt("creditRating"),
+//                                response.getFloat("salary")));
+//        return clients;
+//    }
+
+    // Distinct salary
+//    public List<Client> getClients() {
+//        List<Client> clients = jdbcTemplate.query("SELECT distinct salary FROM clients ORDER BY salary DESC",
 //                (response, rowNumber) ->
 //                        new Client(response.getInt("id"),
 //                                response.getString("name"),
